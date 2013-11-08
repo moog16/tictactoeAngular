@@ -72,8 +72,11 @@ angular.module('tictactoeAngularApp')
         var colSum = _.reduce(board, function(sum, row) {
           return sum += row[col].points;
         }, 0);
-        col++;
-        return whichWinner(colSum, board);
+        if(whichWinner(colSum, board)) {
+          return whichWinner(colSum, board);
+        } else {
+          col++;
+        };
       }
     };
 
