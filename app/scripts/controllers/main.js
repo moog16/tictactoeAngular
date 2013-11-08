@@ -3,7 +3,6 @@
 angular.module('tictactoeAngularApp')
   .controller('MainCtrl', function ($scope, board) {
     var size = 3;
-    
 
     $scope.board = board.create(size);
     $scope.player = true;  // true = p1, false = p2
@@ -18,6 +17,23 @@ angular.module('tictactoeAngularApp')
           $scope.board[row][col].points = 10;
         }
         $scope.player = !$scope.player;
+      }
+    };
+
+    var findWinner = function() {
+
+    };
+
+    var p1Win = $scope.board.length*1;
+    var p2Win = $scope.board.length*10;
+
+
+    var rowWin() = function() {
+      for(var i=0; i<$scope.board.length; i++) {
+        var rowSum = $scope.board[i].reduce(function(num, sum) {
+          return sum += num;
+        });
+        if(rowSum === )
       }
     };
   });
