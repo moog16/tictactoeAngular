@@ -1,26 +1,11 @@
 'use strict';
 
 angular.module('tictactoeAngularApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, board) {
     var size = 3;
-    $scope.board = [];
-    var createBoard = function() {
-      for(var i=0; i<size; i++) {
-        var row = new Array(size);
-        $scope.board.push(row);
-      }
+    
 
-      for(var i=0; i<size; i++) {
-        for(var j=0; j<size; j++) {
-          $scope.board[i][j] = {
-            value: undefined,
-            points: 0
-          }
-        }
-      }
-    };
-
-    createBoard();
+    $scope.board = board.create(size);
     $scope.player = true;  // true = p1, false = p2
 
     $scope.placePiece = function(row, col) {
