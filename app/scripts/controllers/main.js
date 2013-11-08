@@ -10,7 +10,10 @@ angular.module('tictactoeAngularApp')
     var history = [];
 
     $scope.placePiece = function(row, col) {
-      if($scope.board[row][col].value === undefined) {
+      if($scope.board[row][col].value === undefined &&
+        !$scope.gamewinP1 &&
+        !$scope.gamewinP2 &&
+        !$scope.gamelost) {
         moves++;
         history.push([row,col]);
         if($scope.player) {
@@ -36,11 +39,14 @@ angular.module('tictactoeAngularApp')
       var lastMove = history.pop();
       var row = lastMove[0];
       var col = lastMove[1];
-      console.log(row, col);
 
       $scope.board[row][col].value = undefined;
       $scope.board[row][col].points = 0;
       $scope.player = !$scope.player;
+      moves--;
+      $scope.gamewinP1 = false;
+      $scope.gamewinP2 = false;
+      $scope.gamelost = false;
     };
 
     $scope.newBoard = function() {
