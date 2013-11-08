@@ -9,6 +9,12 @@ angular.module('tictactoeAngularApp')
     var moves = 0;
     var history = [];
 
+    var resetGame = function() {
+      $scope.gamewinP1 = false;
+      $scope.gamewinP2 = false;
+      $scope.gamelost = false;
+    };
+
     $scope.placePiece = function(row, col) {
       if($scope.board[row][col].value === undefined &&
         !$scope.gamewinP1 &&
@@ -44,9 +50,7 @@ angular.module('tictactoeAngularApp')
       $scope.board[row][col].points = 0;
       $scope.player = !$scope.player;
       moves--;
-      $scope.gamewinP1 = false;
-      $scope.gamewinP2 = false;
-      $scope.gamelost = false;
+      resetGame();
     };
 
     $scope.newBoard = function() {
@@ -54,5 +58,6 @@ angular.module('tictactoeAngularApp')
         $scope.size = 14;
       }
       $scope.board = board.create($scope.size);
+      resetGame();
     };
   });
