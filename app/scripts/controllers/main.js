@@ -26,6 +26,7 @@ angular.module('tictactoeAngularApp')
 
     var checkWinner = function() {
       rowWin();
+      majDiag();
     };
 
     var whichWinner = function(sum) {
@@ -49,9 +50,10 @@ angular.module('tictactoeAngularApp')
       }
     };
 
-    var colWin = function() {
-      for(var i=0; i<$scope.board.length; i++) {
-
-      }
+    var majDiag = function() {
+      var majDiagSum = _.reduce($scope.board, function(sum, num, ind) {
+        return sum+= num[ind].points;
+      }, 0);
+      whichWinner(majDiagSum);
     };
   });
