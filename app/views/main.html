@@ -1,5 +1,12 @@
+<div class='notification'>
+  <div class='alert alert-warning' ng-hide='gamelost || gamewinP1 || gamewinP2'><h1>TicTacToe</h1></div>
+  <div class='alert alert-danger' ng-show='gamelost'><h1>Cat's Game</h1></div>
+  <div class='alert alert-info' ng-show='gamewinP1'><h1>Player 1 Wins!</h1></div>
+  <div class='alert alert-info' ng-show='gamewinP2'><h1>Player 2 Wins!</h1></div>
+</div>
+
+
 <div class="hero-unit">
-  <h1>TicTacToe</h1>
   <div id="gameboard">
       <div ng-repeat="row in board" class='row'>
         <div ng-repeat='tile in row' class='square' ng-click='placePiece($parent.$index, $index)'>

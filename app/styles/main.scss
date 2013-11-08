@@ -3,6 +3,9 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 @import "bootstrap-sass/lib/bootstrap";
 
+$tileHeight: 50px;
+$tileWidth: 50px;
+
 /* Put your CSS here */
 html, body {
   margin: 20px;
@@ -25,21 +28,25 @@ body {
   padding: 60px;
 }
 
-.hero-unit h1 {
+h1 {
   font-size: 60px;
   line-height: 1;
   letter-spacing: -1px;
+  display: block;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .square {
-  height: 50px;
-  width: 50px;
+  height: $tileHeight;
+  width: $tileWidth;
   background: blue;
   border: solid 1px black;
   float: left;
   text-align: center;
 }
 
-.row {
-
+#gameboard {
+  width: 50%;
+  margin: 0 auto;
 }

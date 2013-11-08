@@ -17,59 +17,7 @@ angular.module('tictactoeAngularApp')
           $scope.board[row][col].points = 10;
         }
         $scope.player = !$scope.player;
-        checkWinner();
+        board.checkWinner($scope.board);
       }
-    };
-
-    var p1Win = $scope.board.length*1;
-    var p2Win = $scope.board.length*10;
-
-    var checkWinner = function() {
-      rowWin($scope.board);
-      majDiag($scope.board);
-      colWin($scope.board);
-    };
-
-    var whichWinner = function(sum) {
-      if(sum === p1Win) {
-        announceWin(p1Win);
-      } else if(sum === p2Win) {
-        announceWin(p2Win);
-      }
-    };
-
-    var announceWin = function(score) {
-      console.log(score);
-    };
-
-    var rowWin = function(board) {
-      for(var i=0; i<board.length; i++) {
-        var rowSum = _.reduce(board[i], function(sum, num) {
-          return sum += num.points;
-        }, 0);
-        whichWinner(rowSum);
-      }
-    };
-
-    var majDiag = function(board) {
-      var majDiagSum = _.reduce(board, function(sum, num, ind) {
-        return sum += num[ind].points;
-      }, 0);
-      whichWinner(majDiagSum);
-    };
-
-    var colWin = function(board) {
-      var col = 0;
-      for(var i=0; i<board.length; i++) {
-        var colSum = _.reduce(board, function(sum, row) {
-          return sum += row[col].points;
-        }, 0);
-        col++;
-        whichWinner(colSum);
-      }
-    };
-
-    var minDiag = function() {
-
     };
   });
