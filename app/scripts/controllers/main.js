@@ -2,9 +2,9 @@
 
 angular.module('tictactoeAngularApp')
   .controller('MainCtrl', function ($scope, board) {
-    var size = 3;
+    $scope.size = 3;
 
-    $scope.board = board.create(size);
+    $scope.board = board.create($scope.size);
     $scope.player = true;  // true = p1, false = p2
     var moves = 0;
 
@@ -24,9 +24,16 @@ angular.module('tictactoeAngularApp')
           $scope.gamewinP1 = true;
         } else if(board.checkWinner($scope.board) === 'p2Win') {
           $scope.gamewinP2 = true;
-        } else if(moves === ($scope.board.length*$scope.board.length-1)) {
+        } else if(moves === ($scope.board.length*$scope.board.length)) {
           $scope.gamelost = true;
         }
       }
+    };
+
+    $scope.newBoard = function() {
+      if($scope.size > 14) {
+        $scope.size = 14;
+      }
+      $scope.board = board.create($scope.size);
     };
   });

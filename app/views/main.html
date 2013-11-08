@@ -6,12 +6,24 @@
 </div>
 
 
-<div class="hero-unit">
-  <div id="gameboard">
-      <div ng-repeat="row in board" class='row'>
+<!-- <div class='hero-unit'> -->
+  <div id='gameboard'>
+      <div ng-repeat='row in board' class='row'>
         <div ng-repeat='tile in row' class='square' ng-click='placePiece($parent.$index, $index)'>
           {{tile.value}}
         </div>
       </div>
   </div>
+<!-- </div> -->
+
+<form ng-submit='newBoard()'>
+<div class='input-group'>
+  <span class='input-group-addon'>Size of Board</span>
+  <input type='text' class='form-control' placeholder='3' ng-model='size'>
+  <br>
+  <div class='btn-group'>
+    <input class='btn btn-default' type='submit' value='Enter'>
+  </div>
 </div>
+<span>max size of 14</span>
+</form>
