@@ -1,9 +1,9 @@
 <div class="hero-unit">
   <h1>TicTacToe</h1>
   <div id="gameboard">
-      <div ng-repeat="row in board">
-        <div ng-repeat='square in row' class='square'>
-          {{square}}
+      <div ng-repeat="row in board" class='row'>
+        <div ng-repeat='tile in row' class='square' ng-click='placePiece($parent.$index, $index)'>
+          {{tile.value}}
         </div>
       </div>
   </div>
