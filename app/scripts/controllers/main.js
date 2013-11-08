@@ -25,9 +25,9 @@ angular.module('tictactoeAngularApp')
     var p2Win = $scope.board.length*10;
 
     var checkWinner = function() {
-      rowWin();
-      majDiag();
-      colWin();
+      rowWin($scope.board);
+      majDiag($scope.board);
+      colWin($scope.board);
     };
 
     var whichWinner = function(sum) {
@@ -42,30 +42,34 @@ angular.module('tictactoeAngularApp')
       console.log(score);
     };
 
-    var rowWin = function() {
-      for(var i=0; i<$scope.board.length; i++) {
-        var rowSum = _.reduce($scope.board[i], function(sum, num) {
+    var rowWin = function(board) {
+      for(var i=0; i<board.length; i++) {
+        var rowSum = _.reduce(board[i], function(sum, num) {
           return sum += num.points;
         }, 0);
         whichWinner(rowSum);
       }
     };
 
-    var majDiag = function() {
-      var majDiagSum = _.reduce($scope.board, function(sum, num, ind) {
+    var majDiag = function(board) {
+      var majDiagSum = _.reduce(board, function(sum, num, ind) {
         return sum += num[ind].points;
       }, 0);
       whichWinner(majDiagSum);
     };
 
-    var colWin = function() {
+    var colWin = function(board) {
       var col = 0;
-      for(var i=0; i<$scope.board.length; i++) {
-        var colSum = _.reduce($scope.board, function(sum, row) {
+      for(var i=0; i<board.length; i++) {
+        var colSum = _.reduce(board, function(sum, row) {
           return sum += row[col].points;
         }, 0);
         col++;
         whichWinner(colSum);
       }
+    };
+
+    var minDiag = function() {
+
     };
   });
